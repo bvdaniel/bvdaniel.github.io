@@ -1,9 +1,39 @@
 //llama variables
-
-//instala nginx
+NAME=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/name)
+ZONE=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/zone)
+MACHINETYPE=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/machine-type)
+PROJECTID=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/project/project-id) 
 
 //descarga repo
 
+git clone https://github.com/bvdaniel/orienta_web.git
+
 //edita el repo
+cd orienta_web
+sed -i '31i <p>ORIENTA "echo $NAME"</p>' index.html
+
+//instala nginx
+cd
+sudo apt-get install ufw
+sudo ufw enable
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 'Nginx HTTPS'
+sudo ufw allow 'Nginx Full'
+sudo rm /etc/nginx/sites-enabled/default
+sudo cp -r ./ /var/www/
+sudo chown -R $USER:$USER /var/www/orienta_web 
+sudo chmod -R 777 *
+scp -r * {IP INTERNA VM}:/var/www/orienta_web
+
+//edit sites available (introducir sed)
+sudo ln -s /etc/nginx/sites-available/orienta_web /etc/nginx/sites-enabled/orienta_web
+sudo mv /etc/nginx/sites-enabled/default /home/daniel/default
+sudo systemctl restart nginx
+
+//edita el servidor (introducir sed)
+sudo ln -s /etc/nginx/sites-available/orienta_Web /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+
+
 
 //detiene apache, restart nginx
