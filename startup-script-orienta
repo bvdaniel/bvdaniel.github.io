@@ -8,9 +8,6 @@ PROJECTID=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/co
 
 git clone https://github.com/bvdaniel/orienta_web.git
 
-//edita el repo
-cd orienta_web
-sed -i '31i <p>ORIENTA "echo $NAME"</p>' index.html
 
 //instala nginx
 cd
