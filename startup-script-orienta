@@ -6,31 +6,48 @@ PROJECTID=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/co
 
 //descarga repo
 
+sudo apt-get update
+sudo apt-get install git
 git clone https://github.com/bvdaniel/orienta_web.git
-
 
 //instala nginx
 cd
+sudo apt install nginx -y
 sudo apt-get install ufw
 sudo ufw enable
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
 sudo ufw allow 'Nginx Full'
 sudo rm /etc/nginx/sites-enabled/default
-sudo cp -r ./ /var/www/
+sudo cp -R ./ /var/www/
 sudo chown -R $USER:$USER /var/www/orienta_web 
-sudo chmod -R 777 *
-scp -r * {IP INTERNA VM}:/var/www/orienta_web
+sudo chown -R $USER:$USER /etc/nginx/sites-available/
+scp -r * 10.128.0.3:/var/www/orienta_web
 
-//edit sites available (introducir sed)
+
+//edit NO USAR sites available (introducir sed)
+cambiar lines de /etc/nginx/sites-available/orienta_web 
+1.empieza con root to >root /var/www/orienta_web
+sed "s/root*/root    /var/www/orienta_web/g"
+2.empieza con server_name to > server_name orienta-webserver; 
+sed "s/server_name*/server_name    orienta-webserver/g"
+
+// Crea el archivo del server con la info que nos importa
+sudo cat <<EOF> /etc/nginx/sites-available/orienta_web
+server{
+listen 80;
+listen [::];
+root /var/www/orienta_web;
+index index.html
+server_name orienta-webserver;
+location / {
+try_files $uri $uri/ =404;
+}
+}
+EOF
+
+//No hay que agregar el host a /etc/nginx/hosts pues GCP lo agrega solo
+//Crea el link simbólico de available a enabled:
+
 sudo ln -s /etc/nginx/sites-available/orienta_web /etc/nginx/sites-enabled/orienta_web
-sudo mv /etc/nginx/sites-enabled/default /home/daniel/default
 sudo systemctl restart nginx
-
-//edita el servidor (introducir sed)
-sudo ln -s /etc/nginx/sites-available/orienta_Web /etc/nginx/sites-enabled/
-sudo systemctl restart nginx
-
-
-
-//detiene apache, restart nginx
