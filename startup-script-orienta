@@ -22,7 +22,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo cp -R ./ /var/www/
 sudo chown -R $USER:$USER /var/www/orienta_web 
 sudo chown -R $USER:$USER /etc/nginx/sites-available/
-scp -r * 10.128.0.3:/var/www/orienta_web
+scp -r * 10.128.0.9:/var/www/orienta_web
 
 
 //edit NO USAR sites available (introducir sed)
@@ -36,7 +36,7 @@ sed "s/server_name*/server_name    orienta-webserver/g"
 sudo cat <<EOF> /etc/nginx/sites-available/orienta_web
 server{
 listen 80;
-listen [::];
+listen [::]:80;
 root /var/www/orienta_web;
 index index.html
 server_name orienta-webserver;
