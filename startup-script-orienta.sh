@@ -22,15 +22,6 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo cp -R ./ /var/www/
 sudo chown -R $USER:$USER /var/www/orienta_web 
 sudo chown -R $USER:$USER /etc/nginx/sites-available/
-scp -r * 10.128.0.9:/var/www/orienta_web
-
-
-//edit NO USAR sites available (introducir sed)
-cambiar lines de /etc/nginx/sites-available/orienta_web 
-1.empieza con root to >root /var/www/orienta_web
-sed "s/root*/root    /var/www/orienta_web/g"
-2.empieza con server_name to > server_name orienta-webserver; 
-sed "s/server_name*/server_name    orienta-webserver/g"
 
 // Crea el archivo del server con la info que nos importa
 sudo cat <<EOF> /etc/nginx/sites-available/orienta_web
