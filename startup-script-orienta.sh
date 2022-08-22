@@ -13,6 +13,8 @@ git clone https://github.com/bvdaniel/orienta_web.git
 //instala nginx
 cd
 sudo apt install nginx -y
+//Install php
+sudo apt-get install php
 sudo apt-get install ufw
 sudo ufw enable
 sudo ufw allow 'Nginx HTTP'
@@ -29,10 +31,17 @@ server{
 listen 80;
 listen [::]:80;
 root /var/www/orienta_web;
-index index.html
+index index.html index.php;
 server_name orienta-webserver;
 location / {
 try_files $uri $uri/ =404;
+}
+location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+}
+location ~ /\.ht {
+        deny all;
 }
 }
 EOF
