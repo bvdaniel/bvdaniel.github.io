@@ -9,6 +9,7 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Bucky Maler">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -49,6 +50,7 @@
             <div class="intro">
               <div class="intro--banner">
                 <h1>Boost your<br>cloud<br>experience</h1>
+                
                 <button class="cta">Hire Us
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
                   <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
@@ -243,20 +245,12 @@
                       </svg>
                       Consultancy
                     </label>
+                    <a href="https://api.whatsapp.com/send?phone=56975280269&text=Hello%20Orienta!" class="float" target="_blank">
+                      <i class="fa fa-whatsapp my-float"></i>
+                      </a>
                   </span>
                 </div>
-                <div class="work-request--information">
-                  <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
-                    <label for="name">Name</label>
-                  </div>
-                  <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <input type="submit" value="Send Request">
-              </form>
+            </form>
             </div>
           </li>
         </ul>
@@ -276,4 +270,26 @@
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
 </body>
+<style>
+
+.float{
+	position:absolute;
+  top: 75%;
+	width:90%;
+	height:50%;
+	bottom:40px;
+	right:40px;
+	background-color:#00000000;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px rgb(15, 14, 14);
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+</style>
 </html>
