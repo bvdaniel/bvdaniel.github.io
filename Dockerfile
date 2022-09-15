@@ -4,7 +4,7 @@ RUN  apt-get -y update
 
 RUN apt-get install -y apache2 curl
 
-EXPOSE 80
+EXPOSE 8080
 
 WORKDIR /var/www/html
 
