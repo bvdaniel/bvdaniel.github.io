@@ -1,0 +1,9 @@
+gcloud builds submit --tag gcr.io/sage-potential-355615/orientaweb --project=sage-potential-355615
+
+gcloud run deploy orientaweb --image gcr.io/sage-potential-355615/orientaweb --platform managed --project=sage-potential-355615 --allow-unauthenticated --region us-central1
+
+gcloud iam service-accounts list --project=sage-potential-355615
+
+gcloud iam service-accounts keys create ./keys.json --iam-account githubactions@sage-potential-355615.iam.gserviceaccount.com
+
+gcloud auth activate-service-account --key-file=keys.json
