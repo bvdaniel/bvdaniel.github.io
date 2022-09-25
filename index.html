@@ -249,19 +249,19 @@
                       Consultancy
                     </label>
                   </span>
-                  <div>
-                    <a href="https://api.whatsapp.com/send?phone=56975280269&text=Hello%20Orienta!" class="float" target="_blank">
-                      <i class="fa fa-whatsapp my-float"></i>
-                      </a>
-                    </div>
                 </div>
             </form>
-            <div>
-              <a class="batch">
+              <div>
+                <a class="batch">
+                  <p>Whatsapp us:</p>
+                  <a href="https://api.whatsapp.com/send?phone=56975280269&text=Hello%20Orienta!" class="float2" target="_blank">
+                    <i class="fa fa-whatsapp float2"></i>
+                  </a>
+                </a>
                 <p>HubPatagonia Batch 22-2</p>
                 <img src="assets/img/hubpatagonia.png" href="https://hubpatagonia.tech" width="180">
-              </a>
-            </div>
+            
+              </div>
             </div>
           </li>
 
@@ -284,13 +284,34 @@
 </body>
 <style>
 
-.float{
-	position:absolute;
+.wrap-flex { display: flex; }
+
+.wrap-flex > * {
+  width: 100%;
+ }
+
+.float2{
+	position:left;
+  top: 68%;
+	width:90%;
+	height:50%;
+	bottom:40px;
+	right:0%;
+	background-color:#00000000;
+	color:#FFF;
+	border-radius:50px;
+  font-size:30px;
+	box-shadow: 2px 2px 3px rgb(15, 14, 14);
+  z-index:100;
+}
+
+.float1{
+	position:center;
   top: 75%;
 	width:90%;
 	height:50%;
 	bottom:40px;
-	right:40px;
+	right:0%;
 	background-color:#00000000;
 	color:#FFF;
 	border-radius:50px;
@@ -305,10 +326,10 @@
 }
 
 .batch{
-  right:38%;
-  position:absolute;
+  right:50%;
+  position:center;
   top: 85%;
-	margin-top:16px;
+	margin-top:10px;
   bottom:80px;
 }
 </style>
